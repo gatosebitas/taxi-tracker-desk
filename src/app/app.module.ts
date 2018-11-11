@@ -17,11 +17,9 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
   imports: [
     BrowserModule,
     AgmCoreModule.forRoot({
-<<<<<<< HEAD
+
       apiKey: 'AIzaSyAMj04e4JqwXUeInlhIErSEZ8_mnAUO-rU'
-=======
-      apiKey: 'AIzaSyBXX5MmV4i-ZKq69l4U7O_3y5WL4h73iwA'
->>>>>>> origin/master
+
     }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule

@@ -1,10 +1,8 @@
 {
   "name": "tracker-desk",
-<<<<<<< HEAD
-  "version": "0.0.0",
-=======
+
   "version": "8.9.4",
->>>>>>> origin/master
+
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -12,10 +10,6 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-<<<<<<< HEAD
-=======
-    "postinstall": "ng build --aot -prod",
->>>>>>> origin/master
     "e2e": "ng e2e"
   },
   "private": true,

@@ -13,26 +13,25 @@ export class AppComponent {
 
   lat: number;
   lng: number;
-<<<<<<< HEAD
-  LatLngLiteral: any;
-=======
 
->>>>>>> origin/master
+  LatLngLiteral: any;
+
+
   init = false;
 
   taxistas: Taxista[] = [];
   siguiendoA: string = null;
   siguiendoNombre: string = null;
-<<<<<<< HEAD
+
   paths: Array<LatLngLiteral> = [
    {lat: -16.3988900 , lng:-71.5350000},
    {lat:-16.3788910 , lng:-71.5450010},
    {lat:-16.3888920 , lng:-71.5550020},
    {lat:-16.3688930 , lng:-71.5650030}
 ];
-=======
 
->>>>>>> origin/master
+
+
 
   constructor(db: AngularFirestore) {
     db.collection('usuarios').valueChanges()
@@ -65,7 +64,7 @@ export class AppComponent {
 
 
   seguir( taxista: Taxista ) {
-    
+
     this.siguiendoA = taxista.clave;
     this.siguiendoNombre = taxista.nombre;
 
@@ -89,8 +88,3 @@ interface Taxista {
   lat: number;
   lng: number;
 }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> origin/master
