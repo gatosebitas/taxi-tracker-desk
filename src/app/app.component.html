@@ -9,18 +9,10 @@
         <h3>Mapa <small *ngIf="siguiendoNombre">siguiendo a: {{ siguiendoNombre }}</small> </h3>
 
         <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
-<<<<<<< HEAD
+
             <agm-marker *ngFor="let taxista of taxistas" [latitude]="taxista.lat" [longitude]="taxista.lng" ></agm-marker>
 
         <agm-polygon [paths]="paths"> </agm-polygon>
-
-
-
-
-=======
-            <agm-marker *ngFor="let taxista of taxistas" [latitude]="taxista.lat" [longitude]="taxista.lng"></agm-marker>
-      
->>>>>>> origin/master
 
         </agm-map>
 
@@ -46,8 +38,5 @@
     </div>
 
 
-<<<<<<< HEAD
+
 </div>
-=======
-</div>
->>>>>>> origin/master
