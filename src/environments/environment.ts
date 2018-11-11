@@ -13,8 +13,5 @@ export const environment = {
     storageBucket: "tracker-taxis-2d95e.appspot.com",
     messagingSenderId: "65345207048"
   }
-<<<<<<< HEAD
+
 };
-=======
-};
->>>>>>> origin/master
