@@ -9,12 +9,14 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
 
   lat: number;
   lng: number;
 
-  LatLngLiteral: any;
+  
+
 
 
   init = false;
@@ -29,9 +31,6 @@ export class AppComponent {
    {lat:-16.3888920 , lng:-71.5550020},
    {lat:-16.3688930 , lng:-71.5650030}
 ];
-
-
-
 
   constructor(db: AngularFirestore) {
     db.collection('usuarios').valueChanges()
@@ -80,11 +79,14 @@ export class AppComponent {
 
 }
 
-
+interface LatLngLiteral {
+  lat: number;
+  lng: number;
+}
 
 interface Taxista {
-  nombre: string;
+ nombre: string;
   clave: string;
-  lat: number;
+   lat: number;
   lng: number;
 }
