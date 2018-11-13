@@ -2,7 +2,9 @@
   "name": "tracker-desk",
 
   "version": "8.9.4",
-
+  "engines": {
+    "node": "8.9.4"
+  },
   "license": "MIT",
   "scripts": {
     "ng": "ng",
