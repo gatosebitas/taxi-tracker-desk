@@ -12,7 +12,8 @@
 
             <agm-marker *ngFor="let taxista of taxistas" [latitude]="taxista.lat" [longitude]="taxista.lng" ></agm-marker>
 
-        <agm-polygon [paths]="paths"> </agm-polygon>
+        <agm-polygon [paths]="nestedPaths"> </agm-polygon>
+
 
         </agm-map>
 
