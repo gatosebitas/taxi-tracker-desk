@@ -1,78 +1,46 @@
 <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Taxistas</a>
 </nav>
+<div class="container">
+  <div class="row pad-10">
+    <div class="col">
+           <div class="list-group">
+            <a  *ngFor="let historico of historicos" class="list-group-item list-group-item-action">
+                {{ historico.nombre }} {{ historico.fecha }}{{ historico.hora_partida }} {{ historico.hora_llegada }}
+                {{historico.lat_partida }}
+                {{historico.lng_partida }}
+                {{historico.lat_llegada }}
+                {{historico.lng_llegada}}
+            </a>
+            <br>
 
-
-<div class="row pad-10">
-
+        </div>
+    </div>
     <div class="col-8">
-        <h3>Mapa <small *ngIf="siguiendoNombre">siguiendo a: {{ siguiendoNombre }}</small> </h3>
+
+        <h3>Mapa <small *ngIf="siguiendoNombre">Follow to: {{ siguiendoNombre }}</small> </h3>
 
         <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
 
             <agm-marker *ngFor="let taxista of taxistas" [latitude]="taxista.lat" [longitude]="taxista.lng" ></agm-marker>
 
         <agm-polygon [paths]="nestedPaths"> </agm-polygon>
-
-
         </agm-map>
 
     </div>
-
-    <div class="col-4">
-        <h3>Taxistas</h3>
-
-        <div class="list-group">
-            <a href="#" (click)="seguir( taxista )" *ngFor="let taxista of taxistas" class="list-group-item list-group-item-action">
-                {{ taxista.nombre }}
-            </a>
-            <br>
+    <div class="col">
+          <h3>Taxistas</h3>
+            <form>
+            <div class="form-group">
+            <label>Search: <input ng-model="searchText"></label>
+            <select multiple class="form-control" >
+            <option (click)="seguir( taxista )" *ngFor="let taxista of taxistas"> {{ taxista.nombre }}</option>
+            </select>
             <button *ngIf="siguiendoNombre" (click)="dejarDeSeguir()" class="btn btn-primary btn-block">
-                Dejar de seguir
+                Stop following
             </button>
-        </div>
-
-
-
-
-
-<form>
-
-
-  <div class="form-group">
-
-    <label>Search: <input ng-model="searchText"></label>
-    <label for="exampleFormControlSelect2">Example multiple select</label>
-    <select multiple class="form-control" >
-      <option (click)="seguir( taxista )" *ngFor="let taxista of taxistas"> {{ taxista.nombre }}</option>
-
-    </select>
-
-      <button *ngIf="siguiendoNombre" (click)="dejarDeSeguir()" class="btn btn-primary btn-block">
-                Dejar de seguir
-            </button>
-  </div>
-
-
-
-
-</form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            </div>
+        </form>
     </div>
-
-
-
+  </div>
 </div>
