@@ -5,6 +5,20 @@
   <div class="row pad-10">
     <div class="col">
            <div class="list-group">
+            <a  *ngFor="let historico of historicos" class="list-group-item list-group-item-action">
+                {{ historico.nombre }} {{ historico.fecha }}{{ historico.hora_partida }} {{ historico.hora_llegada }}
+                {{historico.lat_partida }}
+                {{historico.lng_partida }}
+                {{historico.lat_llegada }}
+                {{historico.lng_llegada}}
+            </a>
+            <br>
+
+        </div>
+    </div>
+<!--
+    <div class="col">
+           <div class="list-group">
             <a href="#" (click)="seguir( taxista )" *ngFor="let taxista of taxistas" class="list-group-item list-group-item-action">
                 {{ taxista.nombre }}
             </a>
@@ -14,6 +28,7 @@
             </button>
         </div> 
     </div>
+-->
     <div class="col-8">
     
         <h3>Mapa <small *ngIf="siguiendoNombre">Follow to: {{ siguiendoNombre }}</small> </h3>
