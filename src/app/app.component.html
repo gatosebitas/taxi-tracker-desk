@@ -1,27 +1,54 @@
 <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Taxistas</a>
 </nav>
-
-
-<div class="row pad-10">
-
+<div class="container">
+  <div class="row pad-10">
+    <div class="col">
+           <div class="list-group">
+            <a href="#" (click)="seguir( taxista )" *ngFor="let taxista of taxistas" class="list-group-item list-group-item-action">
+                {{ taxista.nombre }}
+            </a>
+            <br>
+            <button *ngIf="siguiendoNombre" (click)="dejarDeSeguir()" class="btn btn-primary btn-block">
+                Dejar de seguir
+            </button>
+        </div> 
+    </div>
     <div class="col-8">
-        <h3>Mapa <small *ngIf="siguiendoNombre">siguiendo a: {{ siguiendoNombre }}</small> </h3>
+    
+        <h3>Mapa <small *ngIf="siguiendoNombre">Follow to: {{ siguiendoNombre }}</small> </h3>
 
         <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
 
             <agm-marker *ngFor="let taxista of taxistas" [latitude]="taxista.lat" [longitude]="taxista.lng" ></agm-marker>
 
         <agm-polygon [paths]="nestedPaths"> </agm-polygon>
-
-
         </agm-map>
-
+             
     </div>
+    <div class="col">
+          <h3>Taxistas</h3>
+            <form>
+            <div class="form-group">
+            <label>Search: <input ng-model="searchText"></label>
+            <select multiple class="form-control" >
+            <option (click)="seguir( taxista )" *ngFor="let taxista of taxistas"> {{ taxista.nombre }}</option>
+            </select>
+            <button *ngIf="siguiendoNombre" (click)="dejarDeSeguir()" class="btn btn-primary btn-block">
+                Stop following
+            </button>
+            </div>
+        </form>
+    </div>
+  </div>
+</div>
 
-    <div class="col-4">
-        <h3>Taxistas</h3>
 
+
+
+<!--
+
+<div class="row pad-10">
         <div class="list-group">
             <a href="#" (click)="seguir( taxista )" *ngFor="let taxista of taxistas" class="list-group-item list-group-item-action">
                 {{ taxista.nombre }}
@@ -32,47 +59,47 @@
             </button>
         </div>
 
-        
+<div class="row pad-10">
 
+    <div class="col-8">
 
+        <h3>Mapa <small *ngIf="siguiendoNombre">Follow to: {{ siguiendoNombre }}</small> </h3>
 
-<form>
- 
- 
-  <div class="form-group">
-    
-    <label>Search: <input ng-model="searchText"></label>
-    <label for="exampleFormControlSelect2">Example multiple select</label>
-    <select multiple class="form-control" >
-      <option (click)="seguir( taxista )" *ngFor="let taxista of taxistas"> {{ taxista.nombre }}</option>
-      
-    </select>
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
 
-      <button *ngIf="siguiendoNombre" (click)="dejarDeSeguir()" class="btn btn-primary btn-block">
-                Dejar de seguir
-            </button>
-  </div>
+            <agm-marker *ngFor="let taxista of taxistas" [latitude]="taxista.lat" [longitude]="taxista.lng" ></agm-marker>
 
-
-
-
-</form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <agm-polygon [paths]="nestedPaths"> </agm-polygon>
+        </agm-map>
     </div>
 
 
 
+        <div class="list-group">
+            <a href="#" (click)="seguir( taxista )" *ngFor="let taxista of taxistas" class="list-group-item list-group-item-action">
+                {{ taxista.nombre }}
+            </a>
+            <br>
+            <button *ngIf="siguiendoNombre" (click)="dejarDeSeguir()" class="btn btn-primary btn-block">
+                Dejar de seguir
+            </button>
+        </div>
+    <div class="col-4">
+        <h3>Taxistas</h3>
+    <form>
+        <div class="form-group">
+            <label>Search: <input ng-model="searchText"></label>
+        <select multiple class="form-control" >
+            <option (click)="seguir( taxista )" *ngFor="let taxista of taxistas"> {{ taxista.nombre }}</option>
+        </select>
+        <button *ngIf="siguiendoNombre" (click)="dejarDeSeguir()" class="btn btn-primary btn-block">
+                Stop following
+        </button>
+        </div>
+    </form>
+    
+    </div>
 </div>
+</div>
+
+-->     
