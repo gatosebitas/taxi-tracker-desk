@@ -15,13 +15,14 @@ export class AppComponent {
   lat: number;
   lng: number;
 
-  
+
 
 
 
   init = false;
 
   taxistas: Taxista[] = [];
+  historicos: Historico[]= [];
   siguiendoA: string = null;
   siguiendoNombre: string = null;
 
@@ -34,7 +35,7 @@ nestedPaths: Array<Array<LatLngLiteral>> = [
 ],[
   {lat:-16.38925,lng: -71.56863},
   {lat:-16.38891,lng: -71.5477},
-  {lat:-16.39295,lng: -71.53863}, 
+  {lat:-16.39295,lng: -71.53863},
   {lat:-16.40806,lng: -71.54651},
   {lat:-16.40506,lng: -71.56828}
 ],[
@@ -84,6 +85,22 @@ nestedPaths: Array<Array<LatLngLiteral>> = [
 
 
         });
+
+
+        //Rellenando Historico
+        db.collection('historico').valueChanges()
+            .subscribe( ( data: Historico[] ) => {
+
+              this.historicos = data;
+              /*
+              if ( !this.init ) {
+                this.lat = data[0].lat;
+                this.lng = data[0].lng;
+                this.init = true;
+              }
+              */
+        
+            });
   }
 
 
@@ -114,4 +131,16 @@ interface Taxista {
   clave: string;
    lat: number;
   lng: number;
+}
+
+interface Historico {
+    nombre:string;
+    fecha: string;
+    hora_partida:string;
+    hora_llegada:string;
+    lat_partida: number;
+    lng_partida: number;
+    lat_llegada: number;
+    lng_llegada: number;
+
 }

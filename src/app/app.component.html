@@ -32,20 +32,20 @@
             </button>
         </div>
 
-        
+
 
 
 
 <form>
- 
- 
+
+
   <div class="form-group">
-    
+
     <label>Search: <input ng-model="searchText"></label>
     <label for="exampleFormControlSelect2">Example multiple select</label>
     <select multiple class="form-control" >
       <option (click)="seguir( taxista )" *ngFor="let taxista of taxistas"> {{ taxista.nombre }}</option>
-      
+
     </select>
 
       <button *ngIf="siguiendoNombre" (click)="dejarDeSeguir()" class="btn btn-primary btn-block">
