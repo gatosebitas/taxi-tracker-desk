@@ -4,13 +4,19 @@
 <div class="container">
   <div class="row pad-10">
     <div class="col">
+           <div>
+           </div>>
+
            <div class="list-group">
             <a  *ngFor="let historico of historicos" class="list-group-item list-group-item-action">
-                {{ historico.nombre }} {{ historico.fecha }}{{ historico.hora_partida }} {{ historico.hora_llegada }}
-                {{historico.lat_partida }}
-                {{historico.lng_partida }}
-                {{historico.lat_llegada }}
-                {{historico.lng_llegada}}
+                <h5><b>Name:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ historico.nombre }}</h5>
+                <h5><b>Date:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ historico.fecha }}</h5>
+                <h5><b>Start Time:</b>&nbsp;{{ historico.hora_partida }}</h5>
+                <h5><b>Lat:</b>&nbsp;&nbsp;&nbsp;&nbsp;{{historico.lat_partida }}</h5>
+                <h5><b>Lng:</b>&nbsp;&nbsp;&nbsp;&nbsp;{{historico.lng_partida }}</h5>
+                <h5><b>End Time:</b>&nbsp;&nbsp;{{ historico.hora_llegada }}</h5>
+                <h5><b>Lat:</b>&nbsp;&nbsp;&nbsp;&nbsp;{{historico.lat_llegada }}</h5>
+                <h5><b>Lng:</b>&nbsp;&nbsp;&nbsp;&nbsp;{{historico.lng_llegada}}</h5>
             </a>
             <br>
 
@@ -21,16 +27,16 @@
            <div class="list-group">
             <a href="#" (click)="seguir( taxista )" *ngFor="let taxista of taxistas" class="list-group-item list-group-item-action">
                 {{ taxista.nombre }}
+=======
+>>>>>>> b0dc44d42e08416d17e3052f1c2357e0021f2a70
             </a>
             <br>
-            <button *ngIf="siguiendoNombre" (click)="dejarDeSeguir()" class="btn btn-primary btn-block">
-                Dejar de seguir
-            </button>
-        </div> 
+
+        </div>
     </div>
 -->
-    <div class="col-8">
-    
+    <div class="col-6">
+
         <h3>Mapa <small *ngIf="siguiendoNombre">Follow to: {{ siguiendoNombre }}</small> </h3>
 
         <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
@@ -39,7 +45,7 @@
 
         <agm-polygon [paths]="nestedPaths"> </agm-polygon>
         </agm-map>
-             
+
     </div>
     <div class="col">
           <h3>Taxistas</h3>
@@ -57,64 +63,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-<!--
-
-<div class="row pad-10">
-        <div class="list-group">
-            <a href="#" (click)="seguir( taxista )" *ngFor="let taxista of taxistas" class="list-group-item list-group-item-action">
-                {{ taxista.nombre }}
-            </a>
-            <br>
-            <button *ngIf="siguiendoNombre" (click)="dejarDeSeguir()" class="btn btn-primary btn-block">
-                Dejar de seguir
-            </button>
-        </div>
-
-<div class="row pad-10">
-
-    <div class="col-8">
-
-        <h3>Mapa <small *ngIf="siguiendoNombre">Follow to: {{ siguiendoNombre }}</small> </h3>
-
-        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
-
-            <agm-marker *ngFor="let taxista of taxistas" [latitude]="taxista.lat" [longitude]="taxista.lng" ></agm-marker>
-
-        <agm-polygon [paths]="nestedPaths"> </agm-polygon>
-        </agm-map>
-    </div>
-
-
-
-        <div class="list-group">
-            <a href="#" (click)="seguir( taxista )" *ngFor="let taxista of taxistas" class="list-group-item list-group-item-action">
-                {{ taxista.nombre }}
-            </a>
-            <br>
-            <button *ngIf="siguiendoNombre" (click)="dejarDeSeguir()" class="btn btn-primary btn-block">
-                Dejar de seguir
-            </button>
-        </div>
-    <div class="col-4">
-        <h3>Taxistas</h3>
-    <form>
-        <div class="form-group">
-            <label>Search: <input ng-model="searchText"></label>
-        <select multiple class="form-control" >
-            <option (click)="seguir( taxista )" *ngFor="let taxista of taxistas"> {{ taxista.nombre }}</option>
-        </select>
-        <button *ngIf="siguiendoNombre" (click)="dejarDeSeguir()" class="btn btn-primary btn-block">
-                Stop following
-        </button>
-        </div>
-    </form>
-    
-    </div>
-</div>
-</div>
-
--->     
