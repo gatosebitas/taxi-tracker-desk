@@ -4,37 +4,36 @@
 <div class="container">
   <div class="row pad-10">
     <div class="col">
-           <div>
-           </div>>
+           <h3>Historial</h3>
+      
+            <form>
+                <select multiple class="form-control">
+                <option><a  *ngFor="let historico of historicos" class="list-group-item list-group-item-action">
+                    {{ historico.nombre }}
+                </a>
+                </option>
 
-           <div class="list-group">
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                </select>
+            </form>
+            <br>
             <a  *ngFor="let historico of historicos" class="list-group-item list-group-item-action">
-                <h5><b>Name:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ historico.nombre }}</h5>
-                <h5><b>Date:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ historico.fecha }}</h5>
+                <h5><b>Name:</b>&nbsp;{{ historico.nombre }}</h5>
+                <h5><b>Date:</b>&nbsp;{{ historico.fecha }}</h5>
                 <h5><b>Start Time:</b>&nbsp;{{ historico.hora_partida }}</h5>
-                <h5><b>Lat:</b>&nbsp;&nbsp;&nbsp;&nbsp;{{historico.lat_partida }}</h5>
-                <h5><b>Lng:</b>&nbsp;&nbsp;&nbsp;&nbsp;{{historico.lng_partida }}</h5>
-                <h5><b>End Time:</b>&nbsp;&nbsp;{{ historico.hora_llegada }}</h5>
-                <h5><b>Lat:</b>&nbsp;&nbsp;&nbsp;&nbsp;{{historico.lat_llegada }}</h5>
-                <h5><b>Lng:</b>&nbsp;&nbsp;&nbsp;&nbsp;{{historico.lng_llegada}}</h5>
+                <h5><b>Lat:</b>&nbsp;{{historico.lat_partida }}</h5>
+                <h5><b>Lng:</b>&nbsp;{{historico.lng_partida }}</h5>
+                <h5><b>End Time:</b>&nbsp;{{ historico.hora_llegada }}</h5>
+                <h5><b>Lat:</b>&nbsp;{{historico.lat_llegada }}</h5>
+                <h5><b>Lng:</b>&nbsp;{{historico.lng_llegada}}</h5>
             </a>
             <br>
-
-        </div>
+   
     </div>
-<!--
-    <div class="col">
-           <div class="list-group">
-            <a href="#" (click)="seguir( taxista )" *ngFor="let taxista of taxistas" class="list-group-item list-group-item-action">
-                {{ taxista.nombre }}
-=======
->>>>>>> b0dc44d42e08416d17e3052f1c2357e0021f2a70
-            </a>
-            <br>
 
-        </div>
-    </div>
--->
     <div class="col-6">
 
         <h3>Mapa <small *ngIf="siguiendoNombre">Follow to: {{ siguiendoNombre }}</small> </h3>
@@ -52,9 +51,11 @@
             <form>
             <div class="form-group">
             <label>Search: <input ng-model="searchText"></label>
+            <br>
             <select multiple class="form-control" >
             <option (click)="seguir( taxista )" *ngFor="let taxista of taxistas"> {{ taxista.nombre }}</option>
             </select>
+            <br>
             <button *ngIf="siguiendoNombre" (click)="dejarDeSeguir()" class="btn btn-primary btn-block">
                 Stop following
             </button>
