@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 
 @NgModule({
   declarations: [
@@ -16,6 +16,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
   ],
   imports: [
     BrowserModule,
+    AngularFireDatabaseModule,
     AgmCoreModule.forRoot({
 
       apiKey: 'AIzaSyAMj04e4JqwXUeInlhIErSEZ8_mnAUO-rU'
@@ -24,7 +25,9 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
   ],
-  providers: [],
+  providers: [
+    AngularFireDatabase
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

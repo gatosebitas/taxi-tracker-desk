@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 
 
@@ -14,14 +15,9 @@ export class AppComponent {
 
   lat: number;
   lng: number;
-
-
-
-
-
   init = false;
-
   taxistas: Taxista[] = [];
+  taxistas2: Taxista[] = [];
   historicos: Historico[]= [];
   siguiendoA: string = null;
   siguiendoNombre: string = null;
@@ -57,8 +53,12 @@ nestedPaths: Array<Array<LatLngLiteral>> = [
   {lat:-16.40266,lng: -71.50318}
 ]];
 
+  items: Observable<any[]>;
+  constructor(db: AngularFirestore,
+              public af:AngularFireDatabase
+  ) {
 
-  constructor(db: AngularFirestore) {
+    this.items = af.list('usuarios2').valueChanges();
     db.collection('usuarios').valueChanges()
         .subscribe( ( data: Taxista[] ) => {
 
@@ -92,15 +92,25 @@ nestedPaths: Array<Array<LatLngLiteral>> = [
             .subscribe( ( data: Historico[] ) => {
 
               this.historicos = data;
-              /*
-              if ( !this.init ) {
-                this.lat = data[0].lat;
-                this.lng = data[0].lng;
-                this.init = true;
-              }
-              */
-        
+
             });
+
+            //Usando LA RAMA USUAIOS2 DE FIREBASE
+
+
+            af.list('usuarios2').valueChanges()
+                .subscribe( ( data: Taxista[] ) => {
+
+                  this.taxistas2 = data;
+                  /*
+                  if ( !this.init ) {
+                    this.lat = data[0].lat;
+                    this.lng = data[0].lng;
+                    this.init = true;
+                  }
+                  */
+
+                });
   }
 
 

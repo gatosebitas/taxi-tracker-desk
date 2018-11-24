@@ -40,7 +40,11 @@
 
         <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
 
-            <agm-marker *ngFor="let taxista of taxistas" [latitude]="taxista.lat" [longitude]="taxista.lng" ></agm-marker>
+            <agm-marker *ngFor="let taxista of taxistas" [latitude]="taxista.lat" [longitude]="taxista.lng" [iconUrl]="'../assets/red-circle.ico'"></agm-marker>
+            <agm-marker *ngFor="let taxista2 of items |async" [latitude]="taxista2.lat" [longitude]="taxista2.lng" [iconUrl]="'../assets/red-circle.ico'">
+
+
+            ></agm-marker>
 
         <agm-polygon [paths]="nestedPaths"> </agm-polygon>
         </agm-map>
@@ -54,6 +58,7 @@
             <br>
             <select multiple class="form-control" >
             <option (click)="seguir( taxista )" *ngFor="let taxista of taxistas"> {{ taxista.nombre }}</option>
+            <option (click)="seguir( taxista2 )" *ngFor="let taxista2 of taxistas2"> {{ taxista2.nombre }}</option>
             </select>
             <br>
             <button *ngIf="siguiendoNombre" (click)="dejarDeSeguir()" class="btn btn-primary btn-block">
