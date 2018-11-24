@@ -4,21 +4,28 @@
 <div class="container">
   <div class="row pad-10">
     <div class="col">
-           <h3>Historial</h3>
-      
-            <form>
-                <select multiple class="form-control">
-                <option><a  *ngFor="let historico of historicos" class="list-group-item list-group-item-action">
-                    {{ historico.nombre }}
-                </a>
-                </option>
+        <h3>Detalle</h3>
+        <img src="https://eldorado.aero/wp-content/uploads/2016/04/Logo-Smart-Taxi-200x200.png">
+        <br>
+        <br>
 
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                </select>
-            </form>
+
+            <select name="taxistas" size=10>
+                <option selected value="0">Historial</option>
+                    <optgroup label="Taxistas:">
+                        <option *ngFor="let historico of historicos" > Name: &nbsp;{{ historico.nombre }}</option>
+                        <option *ngFor="let historico of historicos"> Date: &nbsp;{{ historico.fecha }}</option>
+                        <option *ngFor="let historico of historicos"> Start Time: &nbsp;{{ historico.hora_partida }}</option>
+                        <option *ngFor="let historico of historicos"> Lat: &nbsp;{{ historico.lat_partida }}</option>
+                        <option *ngFor="let historico of historicos"> Lng: &nbsp;{{ historico.lng_partida }}</option>
+                        <option *ngFor="let historico of historicos"> End Time: &nbsp;{{ historico.hora_llegada }}</option>
+                        <option *ngFor="let historico of historicos"> Lat: &nbsp;{{ historico.lat_llegada }}</option>
+                        <option *ngFor="let historico of historicos"> Lng: &nbsp;{{ historico.lng_llegada }}</option>
+                </optgroup>
+
+            </select>
+                       
+<!---
             <br>
             <a  *ngFor="let historico of historicos" class="list-group-item list-group-item-action">
                 <h5><b>Name:</b>&nbsp;{{ historico.nombre }}</h5>
@@ -31,7 +38,7 @@
                 <h5><b>Lng:</b>&nbsp;{{historico.lng_llegada}}</h5>
             </a>
             <br>
-   
+-->
     </div>
 
     <div class="col-6">
