@@ -47,8 +47,8 @@
 
         <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
 
-            <agm-marker *ngFor="let taxista of taxistas" [latitude]="taxista.lat" [longitude]="taxista.lng" [iconUrl]="'../assets/red-circle.ico'"></agm-marker>
-            <agm-marker *ngFor="let taxista2 of items |async" [latitude]="taxista2.lat" [longitude]="taxista2.lng" [iconUrl]="'../assets/red-circle.ico'">
+            <agm-marker *ngFor="let taxista of taxistas" [latitude]="taxista.lat" [longitude]="taxista.lng" ></agm-marker>
+            <agm-marker *ngFor="let taxista2 of items |async" [latitude]="taxista2.lat" [longitude]="taxista2.lng">
 
 
             ></agm-marker>
@@ -73,6 +73,8 @@
             </button>
             </div>
         </form>
+
+        <p>Date: <input type="text" id="datepicker"></p>
     </div>
   </div>
 </div>
