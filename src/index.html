@@ -14,11 +14,26 @@
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
   <script>
   $( function() {
     $( "#datepicker" ).datepicker();
   } );
   </script>
+
+	<script>
+		function myFunction() {
+    	var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+    	var diasSemana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
+		var f=new Date();
+    	document.getElementById("demo1").innerHTML = diasSemana[f.getDay()]+", "+ f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear();
+		}
+	</script>
+	<style>
+          body { background: black; }
+          .container { background: black; }
+    </style>
+
 </head>
 
 <body>
