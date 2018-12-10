@@ -1,78 +1,39 @@
 <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Taxistas</a>
+    <input type="checkbox" id="switch"/><label for="switch"></label>
 </nav>
-
-
-<div class="row pad-10">
-
+<div class="container">
+  <div class="row pad-10">
     <div class="col-8">
-        <h3>Mapa <small *ngIf="siguiendoNombre">siguiendo a: {{ siguiendoNombre }}</small> </h3>
-
-        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
-
+        <h3 style="color:white;">Mapa <small *ngIf="siguiendoNombre">Follow to: {{ siguiendoNombre }}</small> </h3>
+        <agm-map [latitude]="-16.441240562661772" [longitude]="-71.52321663863115" [zoom]="13">
             <agm-marker *ngFor="let taxista of taxistas" [latitude]="taxista.lat" [longitude]="taxista.lng" ></agm-marker>
-
+            <agm-marker *ngFor="let taxista2 of items |async" [latitude]="taxista2.lat" [longitude]="taxista2.lng">
+            </agm-marker>
         <agm-polygon [paths]="nestedPaths"> </agm-polygon>
-
-
         </agm-map>
-
     </div>
-
-    <div class="col-4">
-        <h3>Taxistas</h3>
-
-        <div class="list-group">
-            <a href="#" (click)="seguir( taxista )" *ngFor="let taxista of taxistas" class="list-group-item list-group-item-action">
-                {{ taxista.nombre }}
-            </a>
-            <br>
-            <button *ngIf="siguiendoNombre" (click)="dejarDeSeguir()" class="btn btn-primary btn-block">
-                Dejar de seguir
-            </button>
-        </div>
-
-        
-
-
-
-<form>
- 
- 
-  <div class="form-group">
-    
-    <label>Search: <input ng-model="searchText"></label>
-    <label for="exampleFormControlSelect2">Example multiple select</label>
-    <select multiple class="form-control" >
-      <option (click)="seguir( taxista )" *ngFor="let taxista of taxistas"> {{ taxista.nombre }}</option>
-      
-    </select>
-
-      <button *ngIf="siguiendoNombre" (click)="dejarDeSeguir()" class="btn btn-primary btn-block">
-                Dejar de seguir
-            </button>
+    <div class="col">
+          <h3 style="color:white;">Historico</h3>
+          <div class="p-3 mb-2 bg-dark text-white">
+          <button type="button" onclick="myFunction()" id="demo1" class="btn btn-danger">Fecha Actual</button>
+          </div>
+            <form>
+            <div class="form-group">
+            <div class="p-3 mb-2 bg-dark text-white">Desde: <input type="Date"></div> 
+            <div class="p-3 mb-2 bg-dark text-white">Hasta: &nbsp;<input type="date"></div>
+            <select multiple class="form-control" style="height:320px">
+            <option *ngFor="let historico of historicos"><h3>Date:</h3> {{ historico.fecha }}</option>
+            <option *ngFor="let historico of historicos"><h3>Start:</h3> {{ historico.hora_partida }}</option>
+            <option *ngFor="let historico of historicos"><h3>lat:</h3> {{ historico.lat_partida }}</option>
+            <option *ngFor="let historico of historicos"><h3>lng:</h3> {{ historico.lng_partida }}</option>
+            <option *ngFor="let historico of historicos"><h3>End:</h3> {{ historico.hora_llegada }}</option>
+            <option *ngFor="let historico of historicos"><h3>lat:</h3> {{ historico.lat_llegada }}</option>
+            <option *ngFor="let historico of historicos"><h3>lng:</h3> {{ historico.lng_llegada }}</option>
+            </select>
+            </div>
+            </form>
+    </div>
   </div>
-
-
-
-
-</form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </div>
-
-
-
 </div>
+ 
