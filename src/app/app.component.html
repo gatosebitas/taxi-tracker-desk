@@ -1,80 +1,39 @@
 <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Taxistas</a>
+    <input type="checkbox" id="switch"/><label for="switch"></label>
 </nav>
 <div class="container">
   <div class="row pad-10">
-    <div class="col">
-        <h3>Detalle</h3>
-        <img src="https://eldorado.aero/wp-content/uploads/2016/04/Logo-Smart-Taxi-200x200.png">
-        <br>
-        <br>
-
-
-            <select name="taxistas" size=10>
-                <option selected value="0">Historial</option>
-                    <optgroup label="Taxistas:">
-                        <option *ngFor="let historico of historicos" > Name: &nbsp;{{ historico.nombre }}</option>
-                        <option *ngFor="let historico of historicos"> Date: &nbsp;{{ historico.fecha }}</option>
-                        <option *ngFor="let historico of historicos"> Start Time: &nbsp;{{ historico.hora_partida }}</option>
-                        <option *ngFor="let historico of historicos"> Lat: &nbsp;{{ historico.lat_partida }}</option>
-                        <option *ngFor="let historico of historicos"> Lng: &nbsp;{{ historico.lng_partida }}</option>
-                        <option *ngFor="let historico of historicos"> End Time: &nbsp;{{ historico.hora_llegada }}</option>
-                        <option *ngFor="let historico of historicos"> Lat: &nbsp;{{ historico.lat_llegada }}</option>
-                        <option *ngFor="let historico of historicos"> Lng: &nbsp;{{ historico.lng_llegada }}</option>
-                </optgroup>
-
-            </select>
-                       
-<!---
-            <br>
-            <a  *ngFor="let historico of historicos" class="list-group-item list-group-item-action">
-                <h5><b>Name:</b>&nbsp;{{ historico.nombre }}</h5>
-                <h5><b>Date:</b>&nbsp;{{ historico.fecha }}</h5>
-                <h5><b>Start Time:</b>&nbsp;{{ historico.hora_partida }}</h5>
-                <h5><b>Lat:</b>&nbsp;{{historico.lat_partida }}</h5>
-                <h5><b>Lng:</b>&nbsp;{{historico.lng_partida }}</h5>
-                <h5><b>End Time:</b>&nbsp;{{ historico.hora_llegada }}</h5>
-                <h5><b>Lat:</b>&nbsp;{{historico.lat_llegada }}</h5>
-                <h5><b>Lng:</b>&nbsp;{{historico.lng_llegada}}</h5>
-            </a>
-            <br>
--->
-    </div>
-
-    <div class="col-6">
-
-        <h3>Mapa <small *ngIf="siguiendoNombre">Follow to: {{ siguiendoNombre }}</small> </h3>
-
-        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
-
+    <div class="col-8">
+        <h3 style="color:white;">Mapa <small *ngIf="siguiendoNombre">Follow to: {{ siguiendoNombre }}</small> </h3>
+        <agm-map [latitude]="-16.441240562661772" [longitude]="-71.52321663863115" [zoom]="13">
             <agm-marker *ngFor="let taxista of taxistas" [latitude]="taxista.lat" [longitude]="taxista.lng" ></agm-marker>
             <agm-marker *ngFor="let taxista2 of items |async" [latitude]="taxista2.lat" [longitude]="taxista2.lng">
-
-
-            ></agm-marker>
-
+            </agm-marker>
         <agm-polygon [paths]="nestedPaths"> </agm-polygon>
         </agm-map>
-
     </div>
     <div class="col">
-          <h3>Taxistas</h3>
+          <h3 style="color:white;">Historico</h3>
+          <div class="p-3 mb-2 bg-dark text-white">
+          <button type="button" onclick="myFunction()" id="demo1" class="btn btn-danger">Fecha Actual</button>
+          </div>
             <form>
             <div class="form-group">
-            <label>Search: <input ng-model="searchText"></label>
-            <br>
-            <select multiple class="form-control" >
-            <option (click)="seguir( taxista )" *ngFor="let taxista of taxistas"> {{ taxista.nombre }}</option>
-            <option (click)="seguir( taxista2 )" *ngFor="let taxista2 of taxistas2"> {{ taxista2.nombre }}</option>
+            <div class="p-3 mb-2 bg-dark text-white">Desde: <input type="Date"></div> 
+            <div class="p-3 mb-2 bg-dark text-white">Hasta: &nbsp;<input type="date"></div>
+            <select multiple class="form-control" style="height:320px">
+            <option *ngFor="let historico of historicos"><h3>Date:</h3> {{ historico.fecha }}</option>
+            <option *ngFor="let historico of historicos"><h3>Start:</h3> {{ historico.hora_partida }}</option>
+            <option *ngFor="let historico of historicos"><h3>lat:</h3> {{ historico.lat_partida }}</option>
+            <option *ngFor="let historico of historicos"><h3>lng:</h3> {{ historico.lng_partida }}</option>
+            <option *ngFor="let historico of historicos"><h3>End:</h3> {{ historico.hora_llegada }}</option>
+            <option *ngFor="let historico of historicos"><h3>lat:</h3> {{ historico.lat_llegada }}</option>
+            <option *ngFor="let historico of historicos"><h3>lng:</h3> {{ historico.lng_llegada }}</option>
             </select>
-            <br>
-            <button *ngIf="siguiendoNombre" (click)="dejarDeSeguir()" class="btn btn-primary btn-block">
-                Stop following
-            </button>
             </div>
-        </form>
-
-        <p>Date: <input type="text" id="datepicker"></p>
+            </form>
     </div>
   </div>
 </div>
+ 
