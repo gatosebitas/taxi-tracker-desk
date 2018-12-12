@@ -6,10 +6,21 @@
   <div class="row pad-10">
     <div class="col-8">
         <h3 style="color:white;">Mapa <small *ngIf="siguiendoNombre">Follow to: {{ siguiendoNombre }}</small> </h3>
-        <agm-map [latitude]="-16.441240562661772" [longitude]="-71.52321663863115" [zoom]="13">
-            <agm-marker *ngFor="let taxista of taxistas" [latitude]="taxista.lat" [longitude]="taxista.lng" ></agm-marker>
-            <agm-marker *ngFor="let taxista2 of items |async" [latitude]="taxista2.lat" [longitude]="taxista2.lng">
-            </agm-marker>
+        <agm-map [latitude]="-16.441240562661772" [longitude]="-71.52321663863115" [zoom]="13" >
+            <agm-circle [latitude]="-16.399124" [longitude]="-71.534481" [radius]=400 [circleDraggable]="true" [strokeColor]='red' [strokeOpacity]=0.5 [editable]='false' [fillColor]='red' [fillOpacity]="0.5">Zona 1
+            </agm-circle>
+            <agm-circle [latitude]="-16.404848" [longitude]="-71.526926" [radius]=300 [circleDraggable]="true" [strokeColor]='red' [strokeOpacity]=0.5 [editable]='false' [fillColor]='red' [fillOpacity]="0.5">    
+            </agm-circle>
+            <agm-circle [latitude]="-16.389426" [longitude]="-71.548634" [radius]=300 [circleDraggable]="true" [strokeColor]='red' [strokeOpacity]=0.5 [editable]='false' [fillColor]='red' [fillOpacity]="0.5">    
+            </agm-circle>
+            <agm-circle [latitude]="-16.417811" [longitude]="-71.513404" [radius]=350 [circleDraggable]="true" [strokeColor]='red' [strokeOpacity]=0.5 [editable]='false' [fillColor]='red' [fillOpacity]="0.5">
+            </agm-circle>
+            <agm-circle [latitude]="-16.374867" [longitude]="-71.558161" [radius]=350 [circleDraggable]="true" [strokeColor]='red' [strokeOpacity]=0.5 [editable]='false' [fillColor]='red' [fillOpacity]="0.5">
+            </agm-circle>
+            <agm-circle [latitude]="-16.406151" [longitude]="-71.547523" [radius]=150 [circleDraggable]="true" [strokeColor]='red' [strokeOpacity]=0.5 [editable]='false' [fillColor]='red' [fillOpacity]="0.5">
+            </agm-circle>
+            <agm-marker *ngFor="let taxista of taxistas" [latitude]="taxista.lat" [longitude]="taxista.lng"></agm-marker>
+            <agm-marker *ngFor="let taxista2 of items |async" [latitude]="taxista2.lat" [longitude]="taxista2.lng"></agm-marker>
         <agm-polygon [paths]="nestedPaths"> </agm-polygon>
         </agm-map>
     </div>
@@ -24,6 +35,7 @@
             <div class="p-3 mb-2 bg-dark text-white">Hasta: &nbsp;<input type="date"></div>
             <select multiple class="form-control" style="height:320px">
             <option *ngFor="let historico of historicos"><h3>Date:</h3> {{ historico.fecha }}</option>
+            <option *ngFor="let historico of historicos"><h3>speed:</h3> {{ historico.speed }}</option>
             <option *ngFor="let historico of historicos"><h3>Start:</h3> {{ historico.hora_partida }}</option>
             <option *ngFor="let historico of historicos"><h3>lat:</h3> {{ historico.lat_partida }}</option>
             <option *ngFor="let historico of historicos"><h3>lng:</h3> {{ historico.lng_partida }}</option>
